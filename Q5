@@ -1,0 +1,21 @@
+var fs = require('fs');
+
+var dirName = process.argv[2];
+var ex = process.argv[3];
+var ext = "." + ex;
+var path = require('path');
+
+var filterDir = fs.readdir(process.argv[2], function callback(err, list){
+
+  if (err) {
+    throw err;  
+  } else {
+    for(var i= 0; i< list.length; i++){
+      var currExt = path.extname(list[i]);
+      if( currExt === ext){
+        console.log(list[i]);
+      }
+    }
+  }
+
+});
